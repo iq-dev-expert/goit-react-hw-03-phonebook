@@ -2,16 +2,29 @@ import React, { Component } from 'react';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
+import { save, load } from 'utils-js/storage';
 import { nanoid } from 'nanoid';
 import { Container } from './App.styled';
 import { ThemeProvider } from '@emotion/react';
-import { theme } from 'utils/Theme';
+import { theme } from 'utils-style/Theme';
+
+const LS_KEY = 'phonebook-contacts';
 
 class App extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    this.setState({ contacts: load(LS_KEY) });
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      save(LS_KEY, this.state.contacts);
+    }
+  }
 
   onChange = e => {
     const { name, value } = e.target;
