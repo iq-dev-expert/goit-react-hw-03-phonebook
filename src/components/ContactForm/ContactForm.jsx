@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from './ContactForm.styled';
-import { Button } from '../../style/Template.styled';
+import { Button } from '../../utils-style/Template.styled';
 
 class ContactForm extends Component {
   state = { name: '', number: '' };
