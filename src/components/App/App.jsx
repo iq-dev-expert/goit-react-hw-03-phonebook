@@ -17,7 +17,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    if (load(LS_KEY)) {
+    if (load(LS_KEY, [])) {
       this.setState({ contacts: load(LS_KEY) });
     }
   }
