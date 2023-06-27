@@ -9,7 +9,7 @@ const load = (key, initialState = []) => {
     return serializedState ? JSON.parse(serializedState) : initialState;
   } catch (error) {
     console.error('Get state error: ', error.message);
-    return [];
+    return initialState;
   }
 };
 
